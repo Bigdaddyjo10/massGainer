@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <!-- ANCHOR head title -->
+      <div class="d-flex justify-content-center">
+        <h1 class="text-warning">NO PAIN NO GAIN</h1>
+      </div>
+    </header>
+    <main>
+      <!-- ANCHOR what you collet when you click on the image -->
+      <div class="container">
+        <div class="row">
+          <div class="col-3">
+            <div class="d-block bg-danger">
+              <p>mass meter <span id="massCounter">0</span></p>
+            </div>
+          </div>
+          <!-- ANCHOR img to click on -->
+          <div class="col-9">
+            <div class="bg-primary">
+              <p onclick=" growMess()" id="squatRack">SQUAT IMAGE</p>
+            </div>
+
+            <!-- ANCHOR old age bar -->
+            <div class="bg-success">
+              <p>old age bar <span id="oldAgeMeter">0</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-6">
+            <div class="bg-danger">
+              <div>
+                <button onclick="buyingGear('protein shakes')">PRO SHACKS: $<span id="upGear proteinShakesBtn">50</span></button>
+              </div>
+              <div>
+                <button onclick="buyingGear('growth hormone')">hormone: $<span id="upGear hormoneBtn">100</span></button>
+              </div>
+              <div>
+                <button onclick="buyingGear()">STEROIDS: $<span id="upGear steroidBtn">500</span></button>
+              </div>
+            </div>
+          </div>
+          <!-- ANCHOR shows the amount of what you buy -->
+          <div class="col-6">
+            <div class="bg-danger">
+              <p>protein shakes <span id="proteinShakesElement">0</span></p>
+              <p>growth hormone <span id="growthHormoneElement">0</span></p>
+              <p>STEROIDS <span id="steroidsElement">0</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+    <script src="app.js"></script>
+  </body>
+</html>
