@@ -13,7 +13,7 @@ const upgrades = [
     },
     {
         name: 'STEROIDS',
-        cost: 500,
+        cost: 10,
         gains: 1000,
         ingested: false
     }
@@ -22,33 +22,56 @@ let age = 0
 let gainsMeter = 0
 
 
-function buyingGear(name) {
-    const gear = upgrades.find((upgrade) => upgrade.name == name)
+
+function buyingSTEROIDS() {
+    const gear = upgrades.find((upgrade) => upgrade.ingested == true)
+    if (gear.ingested == true) {
+        gainsMeter = gear.gains
+    }
 
     if (gainsMeter < gear.cost) {
-        // @ts-ignore
         console.log("not buying gear");
     }
     else {
         gear.ingested = true
-        console.log("Getting juicy");
+        console.log("Getting", gear.name);
     }
 
-
-}
-function growMess() {
-    const massMeterElement = document.getElementById('massCounter')
-    const upGearElement = document.getElementById('upGear')
-    upGearElement.forEach(())
-    const gear = upgrades.find((upgrade) => upgrade.name == "protein shakes")
-    // @ts-ignore
-    massMeterElement.innerText = gainsMeter += 1
     if (gear.ingested == true) {
         gainsMeter += gear.gains
     }
-    console.log(gainsMeter);
+
+    const massMeterElement = document.getElementById('massCounter')
+
+    upgrades.forEach(gear => {
+        gear.ingested == true
+    });
+    const upgrade = upgrades.find((upgrade) => upgrade.ingested == true)
+    if (upgrade) {
+    }
+    console.log(gainsMeter)
+    gainsMeter++
+    massMeterElement.innerText = gainsMeter
+
 }
 
-// marqueeElements.forEach((marqueeElement) => {
-//     marqueeElement.scrollAmount = 2
+
+function growMass() {
+    const massMeterElement = document.getElementById('massCounter')
+    gainsMeter += 1
+    massMeterElement.innerText = gainsMeter
+}
+
+
+function buyingprotein() { }
+function buyinghormone() { }
+
+// upgrades.forEach((upgrade) => {
+//     upgrade.ingested == true
 // })
+
+
+
+
+
+// setInterval(buyingGear, 1000)
