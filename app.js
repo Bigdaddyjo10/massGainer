@@ -2,50 +2,62 @@ const upgrades = [
     {
         name: 'protein shakes',
         cost: 5,
-        gains: 10,
-        ingested: false
-    },
-    {
-        name: 'growth hormone',
-        cost: 10,
         gains: 100,
         ingested: false
     },
     {
+        name: 'growth hormone',
+        cost: 100,
+        gains: 150,
+        ingested: false
+    },
+    {
         name: 'STEROIDS',
-        cost: 50,
+        cost: 1000,
         gains: 1000,
+        ingested: false
+    },
+    {
+        name: 'youth drink',
+        cost: 1000,
+        age: 52,
         ingested: false
     }
 ]
 let age = 0
 let gainMeter = 0
 
-const massMeterElement = document.getElementById('massCounter')
-
-
-
-
 function buyingProtein() {
+    const massMeterElement = document.getElementById('massCounter')
+    const proteinButton = document.getElementById("proteinShakesBtn")
     const protein = upgrades.find((upgrade) => upgrade.name == 'protein shakes')
-    if (gainMeter > protein.cost) {
-
+    if (gainMeter >= protein.cost) {
         protein.ingested = true
+        gainMeter -= protein.cost
         gainMeter += protein.gains
         massMeterElement.innerText = gainMeter
-
+        protein.cost += 10
+        proteinButton.innerText = protein.cost
     }
-    console.log(gainMeter)
+    if (gainMeter < protein.cost) {
+        console.log("NOT");
+    }
+    gainMeter - protein.cost
 }
 
+const massGainer = 200
 function buyingHormone() {
-
-    const hormone = upgrades.find((upgrade) => upgrade.name == 'growth hormone')
-    if (gainMeter > hormone.cost) {
-
-        hormone.ingested = true
-        gainMeter += hormone.gains
+    const hormoneButton = document.getElementById("hormoneBtn")
+    const massMeterElement = document.getElementById('massCounter')
+    const hormones = upgrades.find((upgrade) => upgrade.name == 'growth hormone')
+    if (gainMeter >= hormones.cost) {
+        hormones.ingested = true
+        gainMeter -= hormones.cost
+        gainMeter += hormones.gains
         massMeterElement.innerText = gainMeter
+        gainMeter += gainMeter
+        hormones.cost += 75
+        hormoneButton.innerText = hormones.cost
 
     }
     setTimeout(() => {
@@ -54,50 +66,91 @@ function buyingHormone() {
             upgrade.ingested = false
         })
     }, 3000)
-
 }
-function buyingSTEROIDS() {
-    // const massMeterElement = document.getElementById('massCounter')
-    const STEROIDS = upgrades.find((upgrade) => upgrade.name == "STEROIDS")
-    if (gainMeter > STEROIDS.cost) {
+function growMass() {
+    const massMeterElement = document.getElementById('massCounter')
+    gainMeter++
+    massMeterElement.innerText = gainMeter
+}
 
-        STEROIDS.ingested = true
-        gainMeter += STEROIDS.gains
+function buyingSTEROIDS() {
+    const stonerButton = document.getElementById('steroidBtn')
+    const massMeterElement = document.getElementById('massCounter')
+    const roids = upgrades.find((upgrade) => upgrade.name == "STEROIDS")
+    if (gainMeter >= roids.cost) {
+        roids.ingested = true
+        gainMeter -= roids.cost
+        gainMeter += roids.gains
         massMeterElement.innerText = gainMeter
+        roids.cost += 1000
+        stonerButton.innerText = roids.cost
+
     }
     setTimeout(() => {
-        upgrades.forEach((upgrade) => {
-            upgrade.ingested = false
+        upgrades.forEach((STEROIDS) => {
+            STEROIDS.ingested = false
         })
-    }, 1000)
+    }, 5000)
+
+}
+
+
+
+const youthDrink = upgrades.find((upgrade) => upgrade.name == 'youth drink')
+youthDrink.age = 0
+const ageElement = document.getElementById("oldAgeMeter")
+
+const massMeterElement = document.getElementById('massCounter')
+
+function buyingYouth() {
+    const youthBin = document.getElementById('youthBtn')
+
+    if (gainMeter >= youthDrink.cost) {
+        youthDrink.ingested = true
+        gainMeter -= youthDrink.cost
+        youthDrink.age -= 20
+        youthDrink.cost *= 2
+        youthBin.innerText = youthDrink.cost
+    }
+}
+
+function aging() {
+    youthDrink.age += 1
+    ageElement.innerText = youthDrink.age
+    if (youthDrink.age >= 100) {
+        return
+        // window.alert('You are too old for gains!')
+    }
 
 }
 
 function addUpGrade() {
+    const massMeterElement = document.getElementById('massCounter')
     upgrades.forEach((upgrade) => {
-        if (upgrade.name == 'protein shakes' && upgrade.ingested == true) {
-            gainMeter += upgrade.gains
+        const protein = upgrades.find((upgrade) => upgrade.name == "STEROIDS")
+
+        if (protein.name == 'protein shakes' && protein.ingested == true) {
             gainMeter++
-            // massMeterElement.innerText += gainMeter
+            massMeterElement.innerText = gainMeter
 
         }
-        if (upgrade.name == 'growth hormone' && upgrade.ingested == true) {
-            gainMeter += upgrade.gains
-            gainMeter++
-            // massMeterElement.innerText += gainMeter
+        const hormone = upgrades.find((upgrade) => upgrade.name == "STEROIDS")
+
+        if (hormone.name == 'growth hormone' && upgrade.ingested == true) {
+            gainMeter += hormone.gains
+            massMeterElement.innerText = gainMeter
 
         }
-        if (upgrade.name == 'STEROIDS' && upgrade.ingested == true) {
-            gainMeter += upgrade.gains
-            gainMeter++
+        const roids = upgrades.find((upgrade) => upgrade.name == "STEROIDS")
+        if (roids.name == 'STEROIDS' && roids.ingested == true) {
+            gainMeter += roids.gains
+            massMeterElement.innerText = gainMeter
         }
-        // const massMeterElement = document.getElementById('massCounter')
-        massMeterElement.innerText = gainMeter
     })
-}
-function growMass() {
-    // const massMeterElement = document.getElementById('massCounter')
-    gainMeter++
+    // console.log(massMeterElement.innerText = gainMeter);
 }
 
-setInterval(addUpGrade, 1000)
+
+
+setInterval(addUpGrade, 500)
+setInterval(aging, 1000)
