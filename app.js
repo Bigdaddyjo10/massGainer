@@ -52,6 +52,7 @@ function buyingProtein() {
         massPureClickElement.innerText = pureClick
 
     }
+
     if (gainMeter < protein.cost) {
         console.log("NOT");
     }
@@ -131,12 +132,14 @@ function buyingYouth() {
     const youthLabel = document.getElementById("youthElement")
 
     const youthBin = document.getElementById('youthBtn')
+    const massMeterElement = document.getElementById('massCounter')
 
     if (gainMeter >= youthDrink.cost) {
         youthDrink.ingested = true
         gainMeter -= youthDrink.cost
         youthDrink.age -= 20
         youthDrink.cost *= 2
+        massMeterElement.innerText = gainMeter
         youthBin.innerText = youthDrink.cost
         youthLabel.innerText++
     }
