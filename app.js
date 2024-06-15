@@ -1,8 +1,8 @@
 const upgrades = [
     {
         name: 'protein shakes',
-        cost: 5,
-        gains: 100,
+        cost: 50,
+        gains: 10,
         ingested: false
     },
     {
@@ -20,14 +20,21 @@ const upgrades = [
     {
         name: 'youth drink',
         cost: 1000,
-        age: 52,
+        age: 50,
         ingested: false
     }
 ]
+
 let age = 0
 let gainMeter = 0
+let growMuscle = 1
+
+
+
+const youthLabel = document.getElementById("youthElement")
 
 function buyingProtein() {
+    const proteinShakesLabel = document.getElementById("proteinShakesElement")
     const massMeterElement = document.getElementById('massCounter')
     const proteinButton = document.getElementById("proteinShakesBtn")
     const protein = upgrades.find((upgrade) => upgrade.name == 'protein shakes')
@@ -35,9 +42,12 @@ function buyingProtein() {
         protein.ingested = true
         gainMeter -= protein.cost
         gainMeter += protein.gains
+        growMuscle += 10
         massMeterElement.innerText = gainMeter
         protein.cost += 10
         proteinButton.innerText = protein.cost
+        proteinShakesLabel.innerText++
+
     }
     if (gainMeter < protein.cost) {
         console.log("NOT");
@@ -47,6 +57,7 @@ function buyingProtein() {
 
 const massGainer = 200
 function buyingHormone() {
+    const growthHormoneLabel = document.getElementById("growthHormoneElement")
     const hormoneButton = document.getElementById("hormoneBtn")
     const massMeterElement = document.getElementById('massCounter')
     const hormones = upgrades.find((upgrade) => upgrade.name == 'growth hormone')
@@ -54,10 +65,12 @@ function buyingHormone() {
         hormones.ingested = true
         gainMeter -= hormones.cost
         gainMeter += hormones.gains
+        growMuscle += 50
         massMeterElement.innerText = gainMeter
         gainMeter += gainMeter
         hormones.cost += 75
         hormoneButton.innerText = hormones.cost
+        growthHormoneLabel.innerText++
 
     }
     setTimeout(() => {
@@ -69,11 +82,12 @@ function buyingHormone() {
 }
 function growMass() {
     const massMeterElement = document.getElementById('massCounter')
-    gainMeter++
+    gainMeter += growMuscle
     massMeterElement.innerText = gainMeter
 }
 
 function buyingSTEROIDS() {
+    const steroidsLabel = document.getElementById("steroidsElement")
     const stonerButton = document.getElementById('steroidBtn')
     const massMeterElement = document.getElementById('massCounter')
     const roids = upgrades.find((upgrade) => upgrade.name == "STEROIDS")
@@ -84,6 +98,7 @@ function buyingSTEROIDS() {
         massMeterElement.innerText = gainMeter
         roids.cost += 1000
         stonerButton.innerText = roids.cost
+        steroidsLabel.innerText++
 
     }
     setTimeout(() => {
@@ -103,6 +118,8 @@ const ageElement = document.getElementById("oldAgeMeter")
 const massMeterElement = document.getElementById('massCounter')
 
 function buyingYouth() {
+    const youthLabel = document.getElementById("youthElement")
+
     const youthBin = document.getElementById('youthBtn')
 
     if (gainMeter >= youthDrink.cost) {
@@ -111,6 +128,7 @@ function buyingYouth() {
         youthDrink.age -= 20
         youthDrink.cost *= 2
         youthBin.innerText = youthDrink.cost
+        youthLabel.innerText++
     }
 }
 
@@ -154,3 +172,7 @@ function addUpGrade() {
 
 setInterval(addUpGrade, 500)
 setInterval(aging, 1000)
+
+// *TODO - make a function that add to invitatory as you click a btn
+
+// *TODO - make a on going mass counter
