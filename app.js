@@ -13,7 +13,7 @@ const upgrades = [
     },
     {
         name: 'STEROIDS',
-        cost: 1000,
+        cost: 500,
         gains: 1000,
         ingested: false
     },
@@ -28,10 +28,11 @@ const upgrades = [
 let age = 0
 let gainMeter = 0
 let growMuscle = 1
+let pureClick = 1
 
 
 
-const youthLabel = document.getElementById("youthElement")
+const massPureClickElement = document.getElementById("MassPureClick")
 
 function buyingProtein() {
     const proteinShakesLabel = document.getElementById("proteinShakesElement")
@@ -43,10 +44,12 @@ function buyingProtein() {
         gainMeter -= protein.cost
         gainMeter += protein.gains
         growMuscle += 10
+        pureClick += 10
         massMeterElement.innerText = gainMeter
         protein.cost += 10
         proteinButton.innerText = protein.cost
         proteinShakesLabel.innerText++
+        massPureClickElement.innerText = pureClick
 
     }
     if (gainMeter < protein.cost) {
@@ -66,23 +69,30 @@ function buyingHormone() {
         gainMeter -= hormones.cost
         gainMeter += hormones.gains
         growMuscle += 50
+        pureClick += 50
+
         massMeterElement.innerText = gainMeter
         gainMeter += gainMeter
         hormones.cost += 75
         hormoneButton.innerText = hormones.cost
         growthHormoneLabel.innerText++
+        massPureClickElement.innerText = pureClick
+
 
     }
-    setTimeout(() => {
-        upgrades.filter((upgrade) => upgrade.name == "growth hormone")
-        upgrades.forEach((upgrade) => {
-            upgrade.ingested = false
-        })
-    }, 3000)
+    // setTimeout(() => {
+    //     upgrades.filter((upgrade) => upgrade.name == "growth hormone")
+    //     upgrades.forEach((upgrade) => {
+    //         upgrade.ingested = false
+    //     })
+    // }, 3000)
 }
 function growMass() {
+    // const totalMassElement = document.getElementById('totalMassCounter')
     const massMeterElement = document.getElementById('massCounter')
     gainMeter += growMuscle
+
+
     massMeterElement.innerText = gainMeter
 }
 
@@ -168,11 +178,5 @@ function addUpGrade() {
     // console.log(massMeterElement.innerText = gainMeter);
 }
 
-
-
 setInterval(addUpGrade, 500)
 setInterval(aging, 1000)
-
-// *TODO - make a function that add to invitatory as you click a btn
-
-// *TODO - make a on going mass counter
