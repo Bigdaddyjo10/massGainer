@@ -150,6 +150,7 @@ function aging() {
     ageElement.innerText = youthDrink.age
     if (youthDrink.age >= 100) {
         window.alert('You are too old for gains!')
+        window.location.reload();
     }
 
 }

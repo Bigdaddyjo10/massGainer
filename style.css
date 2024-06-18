@@ -15,6 +15,7 @@ body {
 }
 
 .click-img {
+  cursor: pointer;
   border-radius: 100%;
   background-size: cover;
   max-width: 12em;
