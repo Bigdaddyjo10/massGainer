@@ -28,14 +28,13 @@
         <div class="col-6 d-flex">
           <div class="">
             <div class="d-block fw-bold fs-1 ">
+              <div class="d-block fw-bold  fs-1">
+              <p class="text-danger-emphasis">Auto Clicks <span id="autoClicks">0</span></p>
+            </div>
               <div>
               <p class="text-info-emphasis">Mass Pure Click <span id="MassPureClick">1</span></p>
             </div>
-            <p class="d-block fw-bold text-primary-emphasis fs-1">Mass meter <span id="massCounter">0</span></p>
-            <!-- ANCHOR old age bar -->
-            <div class="d-block fw-bold  fs-1">
-              <p class="text-danger-emphasis"><span id="oldAgeMeter">0</span> Years old</p>
-            </div>
+            <p class="d-block fw-bold text-primary fs-1">Mass meter <span id="massCounter">0</span></p>
           </div>
         </div>
         </div>
@@ -56,21 +55,19 @@
             <div class="d-flex align-content-center align-items-center justify-content-center mt-5 pt-5">
               <div>
                 <button class="m-1 pt-2" onclick="buyingProtein()">
-                PROTEIN SHAKE: <span id="proteinShakesBtn">50</span> MASS
+                PROTEIN SHAKE: <span id="proteinShakesBtn">5</span> MASS
                   <p class="text-light d-flex align-items-end ">Increase click by 10</p>
                 </button>
               </div>
                 <div>
-                  <button class=" m-1 pt-2" onclick="buyingHormone()">hormone: <span id="hormoneBtn">100</span> MASS<p class="text-light d-flex align-items-end">Increase click by 50</p></button>
+                  <button class=" m-1 pt-2" onclick="buyingEggs()">EGGS: <span id="eggsBtn">10</span> MASS<p class="text-light d-flex align-items-end">Increase click by 25</p></button>
                 </div>
                 <div>
-                  <button class=" m-1 pt-2" onclick="buyingSTEROIDS()">STEROIDS: <span id="steroidBtn">500</span> MASS<p class="text-light d-flex align-items-end">Auto Increase by 1000 for a short time</p></button></button>
+                  <button class=" m-1 pt-2" onclick="buyingRice()">RICE: <span id="riceBtn">500</span> MASS<p class="text-light d-flex align-items-end">Auto Increase by 50</p></button></button>
                 </div>
                 <div>
-                  <button class="m-1 pt-2"onclick="buyingYouth()">Fountain Of Youth: 
-                    <span id="youthBtn">1000</span> MASS
-                    <p class="text-light d-flex align-items-end">Will -age by 50 years</p>
-                  </button>
+                    <div>
+                  <button class=" m-1 pt-2" onclick="buyingChicken()">CHICKEN: <span id="chickenBtn">100</span> MASS<p class="text-light d-flex align-items-end">Increase click by 50</p></button></button>
                 </div>
               </div>
           </div>
@@ -81,13 +78,13 @@
                 <p class="label  fs-4" >Protein Shakes <span id="proteinShakesElement">0</span></p>
               </div>
               <div class="border label-bg border-2 d-flex justify-content-center my-1">
-                <p class="label  fs-4" >Growth Hormone <span id="growthHormoneElement">0</span></p>
+                <p class="label  fs-4" >Eggs <span id="eggsElement">0</span></p>
               </div>
               <div class="border label-bg border-2 d-flex justify-content-center my-1">
-                <p class="label fs-4">STEROIDS <span id="steroidsElement">0</span></p>
+                <p class="label fs-4">rice <span id="riceElement">0</span></p>
               </div>
               <div class="border label-bg border-2 d-flex justify-content-center my-1">
-                <p class="label  fs-4"> Fountain Of Youth <span id="youthElement">0</span></p>
+                <p class="label fs-4">chicken <span id="chickenElement">0</span></p>
               </div>
             </div>
           </div>
